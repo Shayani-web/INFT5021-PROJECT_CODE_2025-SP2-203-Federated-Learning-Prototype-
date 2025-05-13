@@ -5,8 +5,9 @@
 import copy
 import torch
 from torchvision import datasets, transforms
-from sampling import mnist_iid, mnist_noniid, mnist_noniid_unequal
-from sampling import cifar_iid, cifar_noniid
+from sampling import cifar_iid
+from sampling import eurosat_noniid
+from torch.utils.data import random_split
 
 
 def get_dataset(args):
@@ -14,7 +15,6 @@ def get_dataset(args):
     the keys are the user index and the values are the corresponding data for
     each of those users.
     """
-
     if args.dataset == 'cifar':
         data_dir = '../data/cifar/'
         apply_transform = transforms.Compose(
@@ -22,54 +22,46 @@ def get_dataset(args):
              transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
         train_dataset = datasets.CIFAR10(data_dir, train=True, download=True,
-                                       transform=apply_transform)
+                                         transform=apply_transform)
 
         test_dataset = datasets.CIFAR10(data_dir, train=False, download=True,
-                                      transform=apply_transform)
+                                        transform=apply_transform)
 
         # sample training data amongst users
         if args.iid:
-            # Sample IID user data from Mnist
             user_groups = cifar_iid(train_dataset, args.num_users)
         else:
-            # Sample Non-IID user data from Mnist
             if args.unequal:
-                # Chose uneuqal splits for every user
                 raise NotImplementedError()
-            else:
-                # Chose euqal splits for every user
-                user_groups = cifar_noniid(train_dataset, args.num_users)
 
-    elif args.dataset == 'mnist' or 'fmnist':
-        if args.dataset == 'mnist':
-            data_dir = '../data/mnist/'
-        else:
-            data_dir = '../data/fmnist/'
-
+    elif args.dataset == 'eurosat':
+        data_dir = '../data/eurosat/'
         apply_transform = transforms.Compose([
             transforms.ToTensor(),
-            transforms.Normalize((0.1307,), (0.3081,))])
+            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+        ])
 
-        train_dataset = datasets.MNIST(data_dir, train=True, download=True,
-                                       transform=apply_transform)
+        # Load the full EuroSAT dataset and split it into train/test
+        full_dataset = datasets.EuroSAT(data_dir, download=True, transform=apply_transform)
+        train_size = int(0.8 * len(full_dataset))
+        test_size = len(full_dataset) - train_size
+        train_dataset, test_dataset = random_split(full_dataset, [train_size, test_size])
 
-        test_dataset = datasets.MNIST(data_dir, train=False, download=True,
-                                      transform=apply_transform)
-
-        # sample training data amongst users
         if args.iid:
-            # Sample IID user data from Mnist
-            user_groups = mnist_iid(train_dataset, args.num_users)
+            raise NotImplementedError("IID sampling not implemented for EuroSAT.")
         else:
-            # Sample Non-IID user data from Mnist
             if args.unequal:
-                # Chose uneuqal splits for every user
-                user_groups = mnist_noniid_unequal(train_dataset, args.num_users)
+                raise NotImplementedError()
             else:
-                # Chose euqal splits for every user
-                user_groups = mnist_noniid(train_dataset, args.num_users)
+                user_groups = eurosat_noniid(train_dataset, args.num_users)
+
+    else:
+        raise ValueError(f"Dataset {args.dataset} not supported.")
 
     return train_dataset, test_dataset, user_groups
+
+
+
 
 
 def average_weights(w):
