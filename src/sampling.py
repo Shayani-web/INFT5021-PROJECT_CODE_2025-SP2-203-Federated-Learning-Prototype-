@@ -186,6 +186,43 @@ def cifar_noniid(dataset, num_users):
                 (dict_users[i], idxs[rand*num_imgs:(rand+1)*num_imgs]), axis=0)
     return dict_users
 
+def eurosat_noniid(dataset, num_users):
+    """
+    Sample non-I.I.D client data from EuroSAT dataset
+    :param dataset: EuroSAT dataset (e.g., loaded via torchvision.datasets.EuroSAT)
+    :param num_users: Number of users
+    :return: dict of image indices for each user
+    """
+    # EuroSAT has 10 classes; adjust shards per class
+    num_classes = 10
+    num_shards_per_class = 20  # 20 shards per class, total 200 shards
+    num_imgs_per_shard = len(dataset) // (num_classes * num_shards_per_class)  # e.g., 27,000 images / 200 = 135
+    
+    idx_shard = [i for i in range(num_classes * num_shards_per_class)]
+    dict_users = {i: np.array([]) for i in range(num_users)}
+    idxs = np.arange(len(dataset))
+    labels = np.array(dataset.dataset.targets)[dataset.indices] # Assuming dataset.targets provides labels
+    
+    # Sort indices by labels
+    idxs_labels = np.vstack((idxs, labels))
+    idxs_labels = idxs_labels[:, idxs_labels[1, :].argsort()]
+    idxs = idxs_labels[0, :]
+    
+    # Assign shards to users based on a subset of classes
+    for i in range(num_users):
+        # Each user gets data from 2 random classes (non-IID)
+        user_classes = np.random.choice(num_classes, size=2, replace=False)
+        for cls in user_classes:
+            # Select one shard randomly from this class
+            shard_indices = list(range(cls * num_shards_per_class, (cls + 1) * num_shards_per_class))
+            rand_shard = np.random.choice(shard_indices, size=1, replace=False)[0]
+            start_idx = rand_shard * num_imgs_per_shard
+            end_idx = start_idx + num_imgs_per_shard
+            dict_users[i] = np.concatenate(
+                (dict_users[i], idxs[start_idx:end_idx]), axis=0)
+    
+    return dict_users
+
 
 if __name__ == '__main__':
     dataset_train = datasets.MNIST('./data/mnist/', train=True, download=True,
