@@ -34,8 +34,8 @@ def next_visibility(s, t):
     v_s = PHI[s] + k * P
     return v_s
 
-def hierarchical_federated_learning(args, train_dataset, test_dataset, user_groups, global_model, logger):
-    """Implement hierarchical FL with visibility-based timing and energy computation."""
+def federated_learning(args, train_dataset, test_dataset, user_groups, global_model, logger):
+    """Implement federated learning with visibility-based timing and energy computation."""
     device = 'cuda' if args.gpu else 'cpu'
     global_model.to(device)
     global_model.train()
