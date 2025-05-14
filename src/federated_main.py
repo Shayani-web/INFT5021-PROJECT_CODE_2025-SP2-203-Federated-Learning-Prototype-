@@ -17,7 +17,7 @@ from options import args_parser
 from update import LocalUpdate, test_inference
 from models import CNNModel, ResNet18Model, EuroSATCNN
 from utils import get_dataset, average_weights, exp_details
-from fedleo import hierarchical_federated_learning
+from fedleo import federated_learning
 from paths import *
 
 import ssl
@@ -48,8 +48,8 @@ if __name__ == '__main__':
         global_model = ResNet18Model(dim_out=args.num_classes)
 
     
-    # Run hierarchical FL
-    train_loss, train_accuracy, test_acc, total_time, total_energy = hierarchical_federated_learning(
+    # Run FL
+    train_loss, train_accuracy, test_acc, total_time, total_energy = federated_learning(
         args, train_dataset, test_dataset, user_groups, global_model, logger)
     
     # Save results
