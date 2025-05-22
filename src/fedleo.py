@@ -23,6 +23,9 @@ ENERGY_ISL = 1.0  # Energy unit for ISL communication (relative)
 ENERGY_GS = 10.0  # Energy unit for GS communication (relative)
 
 # Compute phase offsets for each satellite
+# The orbital period P is the time (in seconds) a satellite takes to complete one full orbit.
+# We want to evenly distribute TOTAL_SATELLITES across this period,
+# so they are spaced out in time (phase) along the orbit.
 PHI = [s * (P / TOTAL_SATELLITES) for s in range(TOTAL_SATELLITES)]
 
 # Define clusters (one per orbit)
@@ -30,7 +33,10 @@ CLUSTER_LIST = [list(range(i * SATS_PER_ORBIT, (i + 1) * SATS_PER_ORBIT)) for i 
 
 def next_visibility(s, t):
     """Calculate the next visibility start time for satellite s after time t."""
+    ## (t - PHI[s]) is the time elapsed since satellite `s` was last at its visibility point.
     k = math.ceil((t - PHI[s]) / P)
+    # # Compute the actual time when satellite s becomes visible next.
+    # This is its phase offset PHI[s] plus k, full orbital periods.
     v_s = PHI[s] + k * P
     return v_s
 
