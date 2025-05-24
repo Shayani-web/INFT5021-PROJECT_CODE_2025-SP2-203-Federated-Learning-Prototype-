@@ -48,32 +48,6 @@ def async_aggregate(global_model, local_weights, alpha=0.5):
     return global_model
 
 
-def evaluate_model(model, loader, device):
-    model.eval()  # Set the model to evaluation mode (no dropout, no weight updates)
-
-    all_preds, all_labels = [], []  # Store predictions and actual labels here
-
-    with torch.no_grad():  # No need to compute gradients during evaluation (this saves memory and time)
-        for batch in loader:
-            inputs = batch["image"].to(device)   # Move the input images to the same device as the model (GPU/CPU)
-            labels = batch["label"].to(device)   # Same for the labels
-
-            outputs = model(inputs)              # Get predictions from the model
-            _, preds = torch.max(outputs, 1)     # Get the index of the class with the highest score (i.e., the predicted label)
-
-            # Bring predictions and labels back to the CPU and convert them to NumPy arrays
-            all_preds.extend(preds.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
-
-    # I calculate some evaluation metrics
-    acc = accuracy_score(all_labels, all_preds)                 # How many predictions were correct?
-    f1 = f1_score(all_labels, all_preds, average='macro')       # F1 Score balances precision and recall across all classes
-    cm = confusion_matrix(all_labels, all_preds)                # Confusion matrix to identify which classes were confused
-
-    # Return all three
-    return acc, f1, cm
-
-
 def fedAsync_Training(args, train_dataset, test_dataset, user_groups, global_model, logger, device):
     """Implement hierarchical FL with visibility-based timing and energy computation."""
     device = 'cuda' if args.gpu else 'cpu'
