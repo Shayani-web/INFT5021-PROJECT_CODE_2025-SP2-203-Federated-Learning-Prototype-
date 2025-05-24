@@ -19,6 +19,10 @@ from models import CNNModel, ResNet18Model, EuroSATCNN
 from utils import get_dataset, average_weights, exp_details
 from fedleo import federated_learning
 from paths import *
+  # PLOTTING (optional)
+import matplotlib
+import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 
 import ssl
 import certifi
@@ -49,33 +53,45 @@ if __name__ == '__main__':
 
     
     # Run FL
-    train_loss, train_accuracy, test_acc, total_time, total_energy = federated_learning(
-        args, train_dataset, test_dataset, user_groups, global_model, logger)
+    if args.run == 'fedleo':
+        train_loss, train_accuracy, test_acc, total_time, total_energy = federated_learning(
+            args, train_dataset, test_dataset, user_groups, global_model, logger)
     
-    # Save results
-    file_name = os.path.join(SAVE_DIR_PKL,f'{args.dataset}_{args.model}_{args.epochs}_hierarchical.pkl')
-    with open(file_name, 'wb') as f:
-        pickle.dump([train_loss, train_accuracy, test_acc, total_time, total_energy], f)
-    
-    print(f'\n Total Run Time: {time.time() - start_time:.4f} seconds')
+        # Save results
+        file_name = os.path.join(SAVE_DIR_PKL,f'{args.dataset}_{args.model}_{args.epochs}_hierarchical.pkl')
+        with open(file_name, 'wb') as f:
+            pickle.dump([train_loss, train_accuracy, test_acc, total_time, total_energy], f)
+        
+        print(f'\n Total Run Time: {time.time() - start_time:.4f} seconds')
 
-    # PLOTTING (optional)
-    import matplotlib
-    import matplotlib.pyplot as plt
-    matplotlib.use('Agg')
+        # PLOTTING (optional)
+        import matplotlib
+        import matplotlib.pyplot as plt
+        matplotlib.use('Agg')
 
-    # Plot Loss curve
-    plt.figure()
-    plt.title('Training Loss vs Communication rounds')
-    plt.plot(range(len(train_loss)), train_loss, color='r')
-    plt.ylabel('Training loss')
-    plt.xlabel('Communication Rounds')
-    plt.savefig(os.path.join(SAVE_DIR, f'loss_{args.dataset}_{args.model}_{args.epochs}_hierarchical.png'))
-    
-    # Plot Average Accuracy vs Communication rounds
-    plt.figure()
-    plt.title('Average Accuracy vs Communication rounds')
-    plt.plot(range(len(train_accuracy)), train_accuracy, color='k')
-    plt.ylabel('Average Accuracy')
-    plt.xlabel('Communication Rounds')
-    plt.savefig(os.path.join(SAVE_DIR, f'accuracy_{args.dataset}_{args.model}_{args.epochs}_hierarchical.png'))
+        # Plot Loss curve
+        plt.figure()
+        plt.title('Training Loss vs Communication rounds')
+        plt.plot(range(len(train_loss)), train_loss, color='r')
+        plt.ylabel('Training loss')
+        plt.xlabel('Communication Rounds')
+        plt.savefig(os.path.join(SAVE_DIR, f'loss_{args.dataset}_{args.model}_{args.epochs}_hierarchical.png'))
+        
+        # Plot Average Accuracy vs Communication rounds
+        plt.figure()
+        plt.title('Average Accuracy vs Communication rounds')
+        plt.plot(range(len(train_accuracy)), train_accuracy, color='k')
+        plt.ylabel('Average Accuracy')
+        plt.xlabel('Communication Rounds')
+        plt.savefig(os.path.join(SAVE_DIR, f'accuracy_{args.dataset}_{args.model}_{args.epochs}_hierarchical.png'))
+
+    elif args.run == 'fedasync':
+            train_accuracy, test_acc, test_loss = fedAsync_Training(
+                args, train_dataset, test_dataset, user_groups, global_model, logger, device='cuda' if args.gpu else 'cpu')
+
+            plt.figure()
+            plt.title('Training Accuracy vs Communication rounds')
+            plt.plot(range(len(train_accuracy)), train_accuracy, color='k')
+            plt.ylabel('Training Accuracy')
+            plt.xlabel('Communication Rounds')
+            plt.savefig(os.path.join(SAVE_DIR, f'train_accuracy_{args.dataset}_{args.model}_{args.epochs}_fedasync.png'))
