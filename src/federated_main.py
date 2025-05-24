@@ -18,6 +18,7 @@ from update import LocalUpdate, test_inference
 from models import CNNModel, ResNet18Model, EuroSATCNN
 from utils import get_dataset, average_weights, exp_details
 from fedleo import federated_learning
+from FedAsync import fedAsync_Training
 from paths import *
   # PLOTTING (optional)
 import matplotlib
