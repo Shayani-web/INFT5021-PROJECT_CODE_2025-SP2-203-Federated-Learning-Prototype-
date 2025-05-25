@@ -45,6 +45,8 @@ def args_parser():
     # other arguments
     parser.add_argument('--run', type=str, default='fedleo',help= "federated model type"
     )
+    parser.add_argument('--alpha', type=float, default=0.5, help="alpha value for FedAsync aggregation (default: 0.5)" 
+    )
     
     parser.add_argument('--dataset', type=str, default='mnist', help="name \
                         of dataset")
