@@ -56,8 +56,6 @@ def fedAsync_Training(args, train_dataset, test_dataset, user_groups, global_mod
     
     # Initialize metrics
     train_accuracy = []
-    num_rounds = 20
-    local_epochs = 20 
 
     clients = create_clients(train_dataset, num_clients=40)
 
@@ -68,10 +66,6 @@ def fedAsync_Training(args, train_dataset, test_dataset, user_groups, global_mod
         # Each round, simulates asynchronous behavior by picking one random client (instead of all clients training in sync)
         selected_client = random.choice(range(len(clients)))
         print(f"Selected Client: {selected_client}")  # Show which client was picked
-
-        # Load that client's data into a DataLoader
-        # Set batch size to 20 here (as used in the paper), and shuffle the data for randomness
-        client_loader = DataLoader(clients[selected_client], batch_size=20, shuffle=True)
 
         # Create a fresh copy of the global model for the client to train on
         local_model = copy.deepcopy(global_model)  # Make a copy of the global model so the client can train on it
