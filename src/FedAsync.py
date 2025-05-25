@@ -18,13 +18,19 @@ import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 
 
-def create_clients(dataset, num_clients=40):  # Set the number of clients to 40 to match the setup used in the research paper
-    indices = list(range(len(dataset)))  # create a list of all the indices in the dataset
-    random.shuffle(indices)  # Then shuffle them to randomize how the data is split (so each client gets a mix)
-    split_indices = np.array_split(indices, num_clients)  # Break the shuffled list into 40 chunks (one per client)
+def create_clients(dataset, num_clients=40, num_orbits=5):
+    indices = list(range(len(dataset)))
+    random.shuffle(indices)  # Ensure data is randomly distributed
+    split_indices = np.array_split(indices, num_clients)
 
-    # Each client gets a subset of the data using their portion of the indices
-    return [Subset(dataset, idxs) for idxs in split_indices]
+    clients = [Subset(dataset, idxs) for idxs in split_indices]
+
+    # Block-wise orbit assignment: group nearby clients into the same orbit
+    clients_per_orbit = num_clients // num_orbits
+    orbits = [i for i in range(num_orbits) for _ in range(clients_per_orbit)]
+
+    return clients, orbits
+
 
 
 
