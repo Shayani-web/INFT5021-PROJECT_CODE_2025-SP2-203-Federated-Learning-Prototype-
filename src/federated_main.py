@@ -29,6 +29,28 @@ import ssl
 import certifi
 ssl._create_default_https_context = ssl._create_unverified_context
 
+def append_accuracy_csv(model_name, accuracy,specs, filename='accuracy_results.csv'):
+    specs = ", ".join([spec for spec in specs])
+
+    columns = [
+        "Model Name",
+        "Model",
+        "Dataset",
+        "Epochs",
+        "Local Epochs",
+        "Local Batch Size",
+        "Learning Rate",
+        "Optimizer",
+        "IID",
+        "Accuracy"
+    ]
+
+    if not os.path.exists(filename):
+        with open(filename, 'w') as f:
+            f.write(','.join(columns) + '\n')
+    with open(filename, 'a') as f:
+        f.write(f"{model_name}, {specs}, {accuracy}\n")
+    print(f"Appended accuracy {accuracy} to {filename}.")
 
 if __name__ == '__main__':
     start_time = time.time()
@@ -96,3 +118,17 @@ if __name__ == '__main__':
             plt.ylabel('Training Accuracy')
             plt.xlabel('Communication Rounds')
             plt.savefig(os.path.join(SAVE_DIR, f'train_accuracy_{args.dataset}_{args.model}_{args.epochs}_fedasync.png'))
+
+    specs = [
+        f"{args.model}",
+        f"{args.dataset}",
+        f"{args.epochs}",
+        f"{args.local_ep}",
+        f"{args.local_bs}",
+        f"{args.lr}",
+        f"{args.optimizer}",
+        f"{args.iid}",
+    ]
+
+    model_name = f"{args.run} for {args.dataset}"
+    append_accuracy_csv(model_name, test_acc, specs)
