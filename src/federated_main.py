@@ -18,7 +18,7 @@ from update import LocalUpdate, test_inference
 from models import CNNModel, ResNet18Model, EuroSATCNN
 from utils import get_dataset, average_weights, exp_details
 from fedleo import federated_learning
-from FedAsync import fedAsync_Training
+from FedAsyn import fedAsync_Training
 from paths import *
   # PLOTTING (optional)
 import matplotlib
@@ -108,8 +108,8 @@ if __name__ == '__main__':
         plt.xlabel('Communication Rounds')
         plt.savefig(os.path.join(SAVE_DIR, f'accuracy_{args.dataset}_{args.model}_{args.epochs}_hierarchical.png'))
 
-    elif args.run == 'fedasync':
-            train_accuracy, test_acc, test_loss = fedAsync_Training(
+    elif args.run == 'fedasync':  #Run FedAsync
+            train_accuracy, test_acc, test_loss, total_time, total_energy = fedAsync_Training(
                 args, train_dataset, test_dataset, user_groups, global_model, logger, device='cuda' if args.gpu else 'cpu')
 
             plt.figure()
@@ -118,6 +118,31 @@ if __name__ == '__main__':
             plt.ylabel('Training Accuracy')
             plt.xlabel('Communication Rounds')
             plt.savefig(os.path.join(SAVE_DIR, f'train_accuracy_{args.dataset}_{args.model}_{args.epochs}_fedasync.png'))
+
+            # Load previously saved FedLEO results for comparison (if exists)
+            fedleo_path = os.path.join(SAVE_DIR_PKL, f'{args.dataset}_{args.model}_{args.epochs}_hierarchical.pkl')
+            if os.path.exists(fedleo_path):
+                with open(fedleo_path, 'rb') as f:
+                    fedleo_loss, fedleo_accuracy, _, _, _ = pickle.load(f)
+
+                # Comparison Plot: Accuracy
+                plt.figure()
+                plt.title('FedLEO vs FedAsync: Accuracy per Round')
+                plt.plot(range(len(fedleo_accuracy)), fedleo_accuracy, label='FedLEO', color='blue')
+                plt.plot(range(len(train_accuracy)), train_accuracy, label='FedAsync', color='green')
+                plt.xlabel('Communication Rounds')
+                plt.ylabel('Accuracy')
+                plt.legend()
+                plt.savefig(os.path.join(SAVE_DIR, f'comparison_accuracy_{args.dataset}_{args.model}_{args.epochs}.png'))
+
+                # Comparison Plot: Loss (optional)
+                plt.figure()
+                plt.title('FedLEO vs FedAsync: Loss per Round')
+                plt.plot(range(len(fedleo_loss)), fedleo_loss, label='FedLEO', color='blue')
+                plt.ylabel('Training Loss')
+                plt.xlabel('Communication Rounds')
+                plt.legend()
+                plt.savefig(os.path.join(SAVE_DIR, f'comparison_loss_{args.dataset}_{args.model}_{args.epochs}.png'))
 
     specs = [
         f"{args.model}",
