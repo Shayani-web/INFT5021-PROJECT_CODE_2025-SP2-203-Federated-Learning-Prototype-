@@ -26,7 +26,7 @@ This document provides a technical breakdown of the Python source files used in 
 
 - `alpha`: controls weight blending between local and global model (`--alpha 0.5` default).
 - Only one client is chosen per round.
-- No satellite visibility scheduling — communication is immediate.
+- No satellite visibility scheduling, communication is immediate.
 
 ### FedLEO
 
@@ -44,23 +44,33 @@ This document provides a technical breakdown of the Python source files used in 
 
 ### `CNNModel` (for CIFAR-10)
 -A basic Convolutional Neural Network (CNN) architecture.
+
 -Contains 2 convolutional layers followed by 3 fully connected (dense) layers.
+
 -Ends with a log_softmax layer for classification.
+
 -Designed for CIFAR-10 images, which are 32×32 pixels with 3 colour channels (RGB).
+
 -Lightweight and easy to train on standard image classification tasks.
 
 ### `EuroSATCNN`
 -A modified CNN tailored for EuroSAT images, which are 64×64 RGB satellite images.
+
 -The convolutional layers and fully connected layers are adjusted to handle the larger image size.
+
 -Captures spatial features from satellite scenes like roads, forests, and rivers.
+
 -Useful for testing FL performance on real-world non-IID satellite data.
 
 
 
 ### `ResNet18Model`
 -Based on ResNet-18, a standard deep residual network from torchvision.models.
+
 -Replaces the original final fully connected layer with a custom classifier suited to 10 classes for EuroSAT data.
+
 -Typically used with EuroSAT for better accuracy due to its deeper architecture and skip connections.
+
 -Suitable for more complex tasks and higher-performing FL experiments.
 
 
