@@ -23,7 +23,7 @@ def args_parser():
                         help='SGD momentum (default: 0.5)')
 
     # model arguments
-    parser.add_argument('--model', type=str, default='mlp', help='model name')
+    parser.add_argument('--model', type=str, default='resnet18', help='model name')
     parser.add_argument('--kernel_num', type=int, default=9,
                         help='number of each kind of kernel')
     parser.add_argument('--kernel_sizes', type=str, default='3,4,5',
@@ -46,7 +46,7 @@ def args_parser():
     parser.add_argument('--alpha', type=float, default=0.5, help="alpha value for FedAsync aggregation (default: 0.5)" 
     )
     
-    parser.add_argument('--dataset', type=str, default='mnist', help="name \
+    parser.add_argument('--dataset', type=str, default='eurosat', help="name \
                         of dataset")
     parser.add_argument('--num_classes', type=int, default=10, help="number \
                         of classes")
