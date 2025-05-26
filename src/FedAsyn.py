@@ -36,7 +36,7 @@ def create_clients(dataset, num_clients=40, num_orbits=5):
 
 def async_aggregate(global_model, local_weights, alpha=0.5):
     """
-    I’m blending the local model from one client into the global model.
+    Blending the local model from one client into the global model.
     The 'alpha' value controls how much of the local model I want to mix in.
     If alpha = 0.5, it means equally weighting the local and global models.
     """
@@ -47,7 +47,7 @@ def async_aggregate(global_model, local_weights, alpha=0.5):
     for key in global_weights:
         global_weights[key] = alpha * local_weights[key] + (1 - alpha) * global_weights[key]
 
-    # Then load these newly combined weights back into the global model
+    # Then load these newly combined weights back into the global model.
     global_model.load_state_dict(global_weights)
 
     # Finally, return the updated global model so it can be used for the next round or by other clients
@@ -55,21 +55,20 @@ def async_aggregate(global_model, local_weights, alpha=0.5):
 
 
 def fedAsync_Training(args, train_dataset, test_dataset, user_groups, global_model, logger, device):
-    """Implement hierarchical FL with visibility-based timing and energy computation."""
     device = 'cuda' if args.gpu else 'cpu'
     global_model.to(device)
     global_model.train()
     
-    # Initialize metrics
+    # Initialise metrics
     train_accuracy = []
 
     clients = create_clients(train_dataset, num_clients=40)
 
     # Loop through the number of training rounds
-    for rnd in range(num_rounds):
+    for rnd in range(args.epochs):
         print(f"\n--- Round {rnd + 1} ---")  # track progress
 
-        # Each round, simulates asynchronous behavior by picking one random client (instead of all clients training in sync)
+        # Each round simulates asynchronous behaviour by picking one random client (instead of all clients training in sync)
         selected_client = random.choice(range(len(clients)))
         print(f"Selected Client: {selected_client}")  # Show which client was picked
 
