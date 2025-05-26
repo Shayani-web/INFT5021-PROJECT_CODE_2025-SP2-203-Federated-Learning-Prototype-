@@ -1,8 +1,8 @@
 # Federated Learning for Orbital Edge Computing: FedLEO vs FedAsync
 
-This repository reproduces and compares two Federated Learning (FL) algorithms—**FedAsync** and **FedLEO**—in the context of **Orbital Edge Computing (OEC)**. The implementation is guided by the research presented in:
+This repository reproduces and compares two Federated Learning (FL) algorithms, **FedAsync** and **FedLEO** in the context of Orbital Edge Computing (OEC). The implementation is guided by the research presented in:
 
-**Jabbarpour, M. R., et al. (2023).** *Performance Analysis of Federated Learning in Orbital Edge Computing*. In *2023 IEEE/ACM 16th International Conference on Utility and Cloud Computing (UCC’23)*. [https://doi.org/10.1145/3603166.3632140](https://doi.org/10.1145/3603166.3632140)
+**Jabbarpour et al. (2023).** *Performance Analysis of Federated Learning in Orbital Edge Computing*. In *2023 IEEE/ACM 16th International Conference on Utility and Cloud Computing (UCC’23)*. [https://doi.org/10.1145/3603166.3632140](https://doi.org/10.1145/3603166.3632140)
 
 ---
 
@@ -71,7 +71,7 @@ These approaches are tested on:
 - Larger batch sizes and more sampled satellites improve learning in non-IID conditions.
 
 > “The number of sampled satellites (cluster size) is a more important parameter in non-IID data distribution than in IID.”  
-> - *Jabbarpour et al., 2023*
+> -*Jabbarpour et al., 2023*
 
 ---
 
