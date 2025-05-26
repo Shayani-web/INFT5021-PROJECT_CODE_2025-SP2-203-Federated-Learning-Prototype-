@@ -86,16 +86,29 @@ Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & 
 ### Directory Structure
 .
 ├── data/                    # Input datasets
+
 ├── save/                    # Model outputs, plots, and results
+
 ├── src/
+
 │   ├── [FedAsync.py](src/FedAsync.py)          # FedAsync training logic
+
 │   ├── [fedleo.py](src/fedleo.py)              # FedLEO training logic with timing & energy model
+
 │   ├── [federated_main.py](src/federated_main.py)  # Main script to launch training
+
 │   ├── [models.py](src/models.py)              # CNN, ResNet18, EuroSATCNN definitions
+
 │   ├── [options.py](src/options.py)            # Command Line Interface argument parsing
+
 │   ├── [paths.py](src/paths.py)                # Path configurations
+
 │   ├── [sampling.py](src/sampling.py)          # IID and Non-IID partitioning on the datasets
+
 │   ├── [update.py](src/update.py)              # Local train/test logic
+
 │   └── [utils.py](src/utils.py)                # Weight averaging, loaders, helpers
+
 ├── [requirments.txt](requirments.txt)          # Python dependencies
+
 └── [.gitignore](.gitignore)                    # Specifies files and folders to be ignored by Git
