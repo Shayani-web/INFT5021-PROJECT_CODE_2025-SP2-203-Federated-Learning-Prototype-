@@ -1,4 +1,4 @@
-# Source Code Overview — FedLEO & FedAsync
+# Source Code Overview - FedLEO & FedAsync
 
 This document provides a technical breakdown of the Python source files used in the implementation of the **FedLEO** and **FedAsync** federated learning algorithms. It supplements the main project-level README by focusing on architecture, parameters, and core logic.
 
