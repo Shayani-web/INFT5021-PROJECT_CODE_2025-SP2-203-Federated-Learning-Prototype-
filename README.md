@@ -1,6 +1,6 @@
-# Federated Learning for Orbital Edge Computing: FedLEO vs FedAsync
+# Federated Learning for Orbital Edge Computing: FedLEO vs FedAsyn
 
-This repository reproduces and compares two Federated Learning (FL) algorithms, **FedAsync** and **FedLEO** in the context of Orbital Edge Computing (OEC). The implementation is guided by the research presented in:
+This repository reproduces and compares two Federated Learning (FL) algorithms, **FedAsyn** and **FedLEO** in the context of Orbital Edge Computing (OEC). The implementation is guided by the research presented in:
 
 **Jabbarpour et al. (2023).** *Performance Analysis of Federated Learning in Orbital Edge Computing*. In *2023 IEEE/ACM 16th International Conference on Utility and Cloud Computing (UCC’23)*. [https://doi.org/10.1145/3603166.3632140](https://doi.org/10.1145/3603166.3632140)
 
@@ -12,7 +12,7 @@ The emergence of Low Earth Orbit (LEO) satellite constellations presents new opp
 
 This project implements and evaluates:
 
-- **FedAsync**: Centralised, asynchronous aggregation of client updates.
+- **FedAsyn**: Centralised, asynchronous aggregation of client updates.
 - **FedLEO**: Decentralised, hierarchical training using intra-orbit clusters.
 
 These approaches are tested on:
@@ -24,7 +24,7 @@ These approaches are tested on:
 
 ## Algorithm Descriptions
 
-### FedAsync (Asynchronous Federated Learning)
+### FedAsyn (Asynchronous Federated Learning)
 
 - Only one random client is selected per round.
 - The global model is updated using the selected client's weights with a mixing parameter α (e.g., 0.5).
@@ -65,23 +65,18 @@ These approaches are tested on:
 ## Key Findings
 
 - Higher training rounds boost accuracy but increase energy and time.
-- FedAsync is well-suited for power-limited environments.
+- FedAsyn is well-suited for power-limited environments.
 - FedLEO yields better accuracy for non-IID data, particularly on EuroSAT.
 - Increasing satellite altitude reduces training time but increases communication energy.
 - Larger batch sizes and more sampled satellites improve learning in non-IID conditions.
 
-> “The number of sampled satellites (cluster size) is a more important parameter in non-IID data distribution than in IID.”  
-> -*Jabbarpour et al., 2023*
-
 ---
 
-## Citation
+## Reference
 
 If you use or extend this work, please cite the original paper:
 
-**APA:**
-
-Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & Butler, C. (2023). *Performance Analysis of Federated Learning in Orbital Edge Computing*. In *2023 IEEE/ACM International Conference on Utility and Cloud Computing (UCC)*. [https://doi.org/10.1145/3603166.3632140](https://doi.org/10.1145/3603166.3632140)
+> Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & Butler, C. (2023). *Performance Analysis of Federated Learning in Orbital Edge Computing*. In *2023 IEEE/ACM International Conference on Utility and Cloud Computing (UCC)*. [https://doi.org/10.1145/3603166.3632140](https://doi.org/10.1145/3603166.3632140)
 
 ### Directory Structure
 .
@@ -92,7 +87,7 @@ Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & 
 
 ├── src/
 
-│   ├── [FedAsync.py](src/FedAsync.py)          # FedAsync training logic
+│   ├── [FedAsyn.py](src/FedAsyn.py)          # FedAsync training logic
 
 │   ├── [fedleo.py](src/fedleo.py)              # FedLEO training logic with timing & energy model
 
