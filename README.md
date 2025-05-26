@@ -34,7 +34,7 @@ These approaches are tested on:
 **Cons**: Accuracy can fluctuate due to stale updates
 
 > “Although the asynchronous centralised FL method has high fluctuations in the accuracy curve, it is suitable for space applications in which power consumption and training time are two main factors.”  
-> — *Jabbarpour et al., 2023*
+> -*Jabbarpour et al., 2023*
 
 ---
 
@@ -49,7 +49,7 @@ These approaches are tested on:
 **Cons**: Requires synchronisation and timing models
 
 > “FedLEO improves model propagation through intra-plane communication and leverages the predictability of satellite orbiting patterns.”  
-> — *Jabbarpour et al., 2023*
+> -*Jabbarpour et al., 2023*
 
 ---
 
@@ -71,7 +71,7 @@ These approaches are tested on:
 - Larger batch sizes and more sampled satellites improve learning in non-IID conditions.
 
 > “The number of sampled satellites (cluster size) is a more important parameter in non-IID data distribution than in IID.”  
-> — *Jabbarpour et al., 2023*
+> - *Jabbarpour et al., 2023*
 
 ---
 
@@ -85,6 +85,7 @@ Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & 
 
 ### Directory Structure
 .
+
 ├── data/                    # Input datasets
 
 ├── save/                    # Model outputs, plots, and results
