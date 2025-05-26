@@ -10,7 +10,19 @@ from torchvision import models
 class ResNet18Model(nn.Module):
     def __init__(self, dim_out):
         super(ResNet18Model, self).__init__()
+        
+        # Load default ResNet18 and modify the input layer to accept 13 channels
         self.resnet = models.resnet18(pretrained=False)
+        self.resnet.conv1 = nn.Conv2d(
+            in_channels=13,  # Change from 3 to 13 for EuroSAT bands
+            out_channels=64,
+            kernel_size=7,
+            stride=2,
+            padding=3,
+            bias=False
+        )
+        
+        # Modify the output layer to match the number of target classes
         num_ftrs = self.resnet.fc.in_features
         self.resnet.fc = nn.Sequential(
             nn.Dropout(p=0.5),
