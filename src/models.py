@@ -10,9 +10,25 @@ from torchvision import models
 class ResNet18Model(nn.Module):
     def __init__(self, dim_out):
         super(ResNet18Model, self).__init__()
+<<<<<<< HEAD
         # Load ResNet18 model from torchvision, without pretrained weights.
         self.resnet = models.resnet18(pretrained=False)
          # Get number of features from the original fully connected (fc) layer
+=======
+        
+        # Load default ResNet18 and modify the input layer to accept 13 channels
+        self.resnet = models.resnet18(pretrained=False)
+        self.resnet.conv1 = nn.Conv2d(
+            in_channels=13,  # Change from 3 to 13 for EuroSAT bands
+            out_channels=64,
+            kernel_size=7,
+            stride=2,
+            padding=3,
+            bias=False
+        )
+        
+        # Modify the output layer to match the number of target classes
+>>>>>>> 89a3a052af84385725134e8c5f283c526ecb8ad8
         num_ftrs = self.resnet.fc.in_features
         # Replace the original fc layer with a dropout + linear layer for classification
         # Dropout helps prevent overfitting by randomly zeroing some inputs
