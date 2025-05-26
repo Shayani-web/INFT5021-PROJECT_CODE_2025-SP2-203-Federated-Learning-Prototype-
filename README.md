@@ -45,7 +45,7 @@ These approaches are tested on:
 - One satellite per cluster communicates with the Ground Station (GS).
 - Aggregation timing is calculated based on visibility patterns.
 
-**Pros**: Efficient in non-IID environments; lower GS communication load  
+**Pros**: Efficient in non-IID environments; low GS communication load  
 **Cons**: Requires synchronisation and timing models
 
 > “FedLEO improves model propagation through intra-plane communication and leverages the predictability of satellite orbiting patterns.”  
