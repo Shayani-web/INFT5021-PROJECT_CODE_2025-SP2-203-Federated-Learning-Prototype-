@@ -60,7 +60,7 @@ def fedAsync_Training(args, train_dataset, test_dataset, user_groups, global_mod
     clients = create_clients(train_dataset, num_clients=40)
 
     # Loop through the number of training rounds
-    for rnd in range(num_rounds):
+    for rnd in range(args.epochs):
         print(f"\n--- Round {rnd + 1} ---")  # track progress
 
         # Each round, simulates asynchronous behavior by picking one random client (instead of all clients training in sync)
