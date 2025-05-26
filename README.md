@@ -38,7 +38,7 @@ These approaches are tested on:
 
 ---
 
-### FedLEO (Hierarchical Federated Learning with Satellite Clusters)
+### FedLEO (Federated Learning in Low Earth Orbit)
 
 - Satellites are grouped by orbits into clusters.
 - Local training is followed by intra-cluster aggregation.
