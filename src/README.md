@@ -1,6 +1,6 @@
-# Source Code Overview - FedLEO & FedAsync
+# Source Code Overview - FedLEO & FedAsyn
 
-This document provides a technical breakdown of the Python source files used in the implementation of the **FedLEO** and **FedAsync** federated learning algorithms. It supplements the main project-level README by focusing on architecture, parameters, and core logic.
+This document provides a technical breakdown of the Python source files used in the implementation of the **FedLEO** and **FedAsyn** federated learning algorithms. It supplements the main project-level README by focusing on architecture, parameters, and core logic.
 
 ---
 
@@ -8,8 +8,8 @@ This document provides a technical breakdown of the Python source files used in 
 
 | File           | Description |
 |----------------|-------------|
-| `main.py`      | Entry point for training. Loads config, dataset, initialises models, and launches either FedAsync or FedLEO based on `--run`. |
-| `FedAsync.py`  | Asynchronous FL implementation: picks a random client per round, blends weights with global model using `alpha`. |
+| `main.py`      | Entry point for training. Loads config, dataset, initialises models, and launches either FedAsyn or FedLEO based on `--run`. |
+| `FedAsyn.py`   | Asynchronous FL implementation: picks a random client per round, blends weights with global model using `alpha`. |
 | `fedleo.py`    | Hierarchical FL using clustered satellites, orbital phase scheduling, and energy accounting. |
 | `models.py`    | Contains all CNN architectures: a basic CNN, ResNet18, and EuroSAT-custom CNN. |
 | `update.py`    | Local client training: data splitting, weight updates, and inference logic. |
@@ -22,7 +22,7 @@ This document provides a technical breakdown of the Python source files used in 
 
 ## Method-Specific Parameters
 
-### FedAsync
+### FedAsyn
 
 - `alpha`: controls weight blending between local and global model (`--alpha 0.5` default).
 - Only one client is chosen per round.
@@ -116,6 +116,6 @@ This document provides a technical breakdown of the Python source files used in 
 
 This implementation is adapted from:
 
-> Jabbarpour, M. R., et al. (2023). *Performance Analysis of Federated Learning in Orbital Edge Computing*. UCC’23. [DOI: 10.1145/3603166.3632140](https://doi.org/10.1145/3603166.3632140)
+> Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & Butler, C. (2023). Performance Analysis of Federated Learning in Orbital Edge Computing. In 2023 IEEE/ACM International Conference on Utility and Cloud Computing (UCC).(https://doi.org/10.1145/3603166.3632140)
 
 ---
