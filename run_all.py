@@ -1,3 +1,10 @@
+
+
+# To run all the algorithms, this file should be used and the code for execution is :
+# python run_all.py
+
+
+
 import subprocess
 
 experiments = [
