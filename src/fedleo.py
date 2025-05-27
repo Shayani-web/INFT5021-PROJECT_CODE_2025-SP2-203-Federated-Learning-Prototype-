@@ -13,7 +13,7 @@ from update import LocalUpdate, test_inference
 from utils import get_dataset, average_weights, exp_details
 
 
-P = 5800  # Orbital period in seconds (approx. for 600 km altitude)
+P = 5800  # Orbital period in seconds (approx. for 600 km altitude) (equation for P is taken from the paper, pg.3.)
 D = 600   # Visibility duration in seconds
 N_ORBITS = 5
 SATS_PER_ORBIT = 8
