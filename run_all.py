@@ -3,7 +3,9 @@
 # To run all the algorithms, this file should be used and the code for execution is :
 # python run_all.py
 
-
+# Experimrntal setup as per "Jabbarpour et al. (2023). Performance Analysis of Federated Learning in Orbital Edge Computing. 
+# In 2023 IEEE/ACM 16th International Conference on Utility and Cloud Computing (UCC’23). 
+# https://doi.org/10.1145/3603166.3632140"
 
 import subprocess
 
