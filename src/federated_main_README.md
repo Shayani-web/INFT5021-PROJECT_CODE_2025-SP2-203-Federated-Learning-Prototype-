@@ -83,18 +83,6 @@ Allows for tracking and comparing results across multiple experiments.
 
 ---
 
-### 5. Visualization
-
-**Purpose:**  
-Generates and saves plots to visualize training metrics and compare FedLEO vs FedAsync.
-
-**Implementation:**
-- For **FedLEO**: Training loss and accuracy vs communication rounds.
-- For **FedAsync**: Accuracy progression and comparison with FedLEO (if available).
-- Saved as `.png` files in `SAVE_DIR`.
-
----
-
 ## Dependencies
 
 ### External Libraries
