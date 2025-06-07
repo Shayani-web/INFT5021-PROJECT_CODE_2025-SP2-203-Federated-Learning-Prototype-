@@ -1,7 +1,7 @@
 # federated_main.py
 
 ## Overview
-The `federated_main.py` file serves as the entry point for running federated learning experiments, supporting both **FedLEO** (synchronous, orbit-based federated learning) and **FedAsync** (asynchronous federated learning). It handles:
+The `federated_main.py` file serves as the entry point for running federated learning experiments, supporting both **FedLEO** (Federated Learning in Low Earth Orbits) and **FedAsync** (asynchronous federated learning). It handles:
 
 - Dataset loading  
 - Model initialization  
@@ -76,7 +76,6 @@ Appends experiment results to `accuracy_results.csv`.
   - Dataset  
   - Epochs  
   - Test accuracy  
-  - Other relevant specs
 
 **Significance:**  
 Allows for tracking and comparing results across multiple experiments.
