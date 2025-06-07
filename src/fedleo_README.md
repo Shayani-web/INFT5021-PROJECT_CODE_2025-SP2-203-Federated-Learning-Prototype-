@@ -2,9 +2,7 @@
 
 ## Overview
 
-The `fedleo.py` file implements the **FedLEO** algorithm, a synchronous federated learning method customized for Low Earth Orbit (LEO) satellite constellations. It incorporates realistic operational constraints such as satellite **visibility windows**, **inter-satellite links (ISL)**, and **ground station (GS)** communication delays. 
-
-The algorithm performs **cluster-level weight aggregation** within each orbit before a global aggregation step and tracks both **training time** and **energy consumption** throughout the learning process.
+The fedleo.py file implements the FedLEO algorithm, a synchronous federated learning approach tailored for Low Earth Orbit (LEO) satellite constellations. It accounts for satellite visibility windows and communication constraints, simulating a realistic scenario where satellites communicate model updates via inter-satellite links (ISL) and ground stations (GS). The algorithm aggregates model weights within orbital clusters before performing global aggregation, and it tracks energy consumption and training time.
 
 ---
 
@@ -132,8 +130,7 @@ Returns:
 
 ## Usage
 
-This file is **not run directly**. Instead, it is invoked by `federated_main.py` when using:
+This file is called from federated_main.py when --run=fedleo. It requires a dataset, model, and user groups, and it simulates a satellite-based federated learning scenario with visibility constraints.
 
-```bash
---run=fedleo
+
 
