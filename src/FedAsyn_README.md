@@ -1,6 +1,6 @@
 ## FedAsyn.py – Asynchronous Federated Learning
 
-The `FedAsyn.py` file implements the **FedAsync** algorithm, an asynchronous federated learning (FL) approach tailored for distributed training across multiple clients—especially relevant in space-based scenarios like satellite constellations.
+The `FedAsyn.py` file implements the **FedAsync** algorithm, an asynchronous federated learning (FL) approach tailored for distributed training across multiple clients, especially relevant in space-based scenarios like satellite constellations.
 
 Unlike synchronous FL, which requires all clients to synchronize their updates at fixed intervals, FedAsync allows **clients to update the global model asynchronously**, reducing waiting time and supporting **intermittent connectivity**.
 
@@ -107,5 +107,5 @@ Orchestrates the entire FedAsync training procedure.
 Run this module by setting the `--run` argument to `fedasync` in `federated_main.py`.
 
 ```bash
-python federated_main.py --run fedasync --model resnet18 --dataset eurosat --epochs 20
+python src/federated_main.py --run=fedasync --model=resnet18 --dataset=eurosat --epochs=20
 
