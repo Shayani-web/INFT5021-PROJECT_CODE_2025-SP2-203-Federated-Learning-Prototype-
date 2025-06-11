@@ -20,9 +20,6 @@ Divides the training dataset into subsets for multiple clients and assigns them 
 - Splits into `num_clients` (default: 40) subsets.
 - Groups clients into `num_orbits` (default: 5) with `num_clients / num_orbits` clients per orbit.
 
-**Why Orbits?**  
-Orbit assignment mimics physical or logical groupings of satellites useful for modeling constraints like visibility windows or localized communication.
-
 ---
 
 #### Asynchronous Model Aggregation (`async_aggregate`)
