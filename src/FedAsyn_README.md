@@ -31,6 +31,7 @@ Orbit assignment mimics physical or logical groupings of satellites—useful for
 Updates the global model incrementally with one client’s update using a weighted average.
 
 **Formula:**
+
 ![image](https://github.com/user-attachments/assets/6033fcca-98ba-422e-bc07-05c423391f87)
 
 
@@ -49,6 +50,7 @@ Updates the global model incrementally with one client’s update using a weight
 Estimates training round energy consumption based on device type and duration.
 
 **Formula:**
+
 ![image](https://github.com/user-attachments/assets/69b1deca-4c0e-4f04-b4e4-a5c9289cbf46)
 
 - \( P = 80W \) for GPU (`cuda`), \( 20W \) for CPU.
