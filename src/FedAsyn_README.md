@@ -2,7 +2,7 @@
 
 The `FedAsyn.py` file implements the **FedAsync** algorithm, an asynchronous federated learning (FL) approach tailored for distributed training across multiple clients, especially relevant in space-based scenarios like satellite constellations.
 
-Unlike synchronous FL, which requires all clients to synchronize their updates at fixed intervals, FedAsync allows **clients to update the global model asynchronously**, reducing waiting time and supporting **intermittent connectivity**.
+Unlike synchronous FL, which requires all clients to synchronize their updates at fixed intervals, FedAsync allows clients to update the global model asynchronously, reducing waiting time and supporting intermittent connectivity [1].
 
 ---
 
@@ -19,9 +19,6 @@ Divides the training dataset into subsets for multiple clients and assigns them 
 - Randomly shuffles dataset indices to avoid bias.
 - Splits into `num_clients` (default: 40) subsets.
 - Groups clients into `num_orbits` (default: 5) with `num_clients / num_orbits` clients per orbit.
-
-**Why Orbits?**  
-Orbit assignment mimics physical or logical groupings of satellites useful for modeling constraints like visibility windows or localized communication.
 
 ---
 
@@ -117,4 +114,5 @@ Run this module by setting the `--run` argument to `fedasync` in `federated_main
 
 ```bash
 python src/federated_main.py --run=fedasync --model=resnet18 --dataset=eurosat --epochs=20
+
 
