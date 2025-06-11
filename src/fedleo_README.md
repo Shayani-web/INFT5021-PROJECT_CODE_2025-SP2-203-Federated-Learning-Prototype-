@@ -91,7 +91,7 @@ Runs the FedLEO algorithm over multiple global rounds.
 - Moves the global model to the specified device (GPU if available, otherwise CPU).
 - Initializes lists to track training loss, accuracy, total time, and energy consumption.
 
-### Per Global Round (for `args.epochs` rounds):
+### 6.1 Per Global Round (for `args.epochs` rounds):
 
 #### Local Training and Cluster Aggregation:
 - For each cluster (representing an orbit), trains all satellites using the `LocalUpdate.update_weights` method from `update.py`.
@@ -117,7 +117,7 @@ Runs the FedLEO algorithm over multiple global rounds.
 #### Logging:
 - Prints statistics for the current round, including loss, accuracy, total time, and energy, and provides a final summary after all rounds.
 
-### Final Evaluation:
+#### Final Evaluation:
 - Assesses the global model’s performance on the test dataset using the `test_inference` method from `update.py`.
 - Returns the training loss history, training accuracy history, test accuracy, total time, and total energy for further analysis.
 
