@@ -17,7 +17,7 @@ The fedleo.py file implements the FedLEO algorithm, a synchronous federated lear
 - `D = 600` seconds: Duration of visibility with ground stations.
 - `N_ORBITS = 5`: Number of orbital planes.
 - `SATS_PER_ORBIT = 8`: Satellites per orbit, totaling `TOTAL_SATELLITES = 40`.
-- `T_TRAIN = 300` seconds: Local training duration.
+- `T_TRAIN = 300` seconds: Local training time per round (5 minutes) [1], a fixed estimate.
 - `ENERGY_ISL = 1.0`: Relative energy cost of inter-satellite communication.
 - `ENERGY_GS = 10.0`: Relative energy cost of ground station communication.
 
