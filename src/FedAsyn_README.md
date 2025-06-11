@@ -31,9 +31,8 @@ Orbit assignment mimics physical or logical groupings of satellites—useful for
 Updates the global model incrementally with one client’s update using a weighted average.
 
 **Formula:**
-$$
-w_{\text{global}}[k] \leftarrow \alpha \cdot w_{\text{local}}[k] + (1 - \alpha) \cdot w_{\text{global}}[k]
-$$
+![image](https://github.com/user-attachments/assets/6033fcca-98ba-422e-bc07-05c423391f87)
+
 
 - \( \alpha \in [0, 1] \) (default: 0.5) controls the influence of local updates.
 - \( k \): layer or parameter index.
