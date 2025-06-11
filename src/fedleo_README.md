@@ -87,14 +87,12 @@ Runs the FedLEO algorithm over multiple global rounds.
 
 
 #### Global Aggregation:
-\[
-w_{\text{global}} = \frac{1}{|\text{CLUSTER\_LIST}|} \sum_{c} w_{\text{cluster}_c}
-\]
+![image](https://github.com/user-attachments/assets/ed1332fa-427f-42d9-9337-02df3fa7643b)
+
 
 #### Energy Calculation:
-\[
-E_{\text{round}} = (\text{TOTAL\_SATELLITES} \cdot \text{ENERGY\_ISL}) + (\text{N\_ORBITS} \cdot \text{ENERGY\_GS})
-\]
+![image](https://github.com/user-attachments/assets/d9870041-9b11-424d-b895-4b46b7b5a428)
+
 
 #### Evaluation:
 - Computes loss and accuracy across all clients.
