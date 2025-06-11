@@ -88,47 +88,6 @@ Runs the FedLEO algorithm over multiple global rounds.
 **Key Steps:**
 
 #### Initialization:
-- Load global model to device.
-- Prepare lists for tracking metrics.
-
-#### Local Training:
-- Each client trains using `LocalUpdate`.
-- Local weights and losses are collected.
-
-#### Cluster Aggregation:
-![image](https://github.com/user-attachments/assets/3dcfcb18-635b-4b5a-aff2-98614f8054fd)
-
-
-#### Master Selection and Communication:
-- Master node is the one with the **earliest visibility**.
-- Aggregation time:
-![image](https://github.com/user-attachments/assets/7bfe1670-efdc-4829-b6df-3075813303ea)
-
-
-#### Global Aggregation:
-Aggregates cluster weights globally:
-![image](https://github.com/user-attachments/assets/ed1332fa-427f-42d9-9337-02df3fa7643b)
-
--Updates the global model with `load_state_dict`.
-
-
-#### Energy Calculation:
-![image](https://github.com/user-attachments/assets/d9870041-9b11-424d-b895-4b46b7b5a428)
-
-
-#### Evaluation:
-- Computes loss and accuracy across all clients.
-- Final test accuracy is calculated post training.
-
-
-# Federated Learning Function (federated_learning)
-
-## Purpose
-Orchestrates the FedLEO training process, integrating local training, cluster aggregation, visibility-based synchronization, and metric tracking.
-
-## Implementation
-
-### Initialization:
 - Moves the global model to the specified device (GPU if available, otherwise CPU).
 - Initializes lists to track training loss, accuracy, total time, and energy consumption.
 
