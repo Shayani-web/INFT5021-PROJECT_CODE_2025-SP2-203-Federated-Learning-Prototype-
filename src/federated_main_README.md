@@ -33,10 +33,10 @@ Configures the experiment by parsing arguments, setting up logging, and loading 
 Initializes the global model based on the dataset and model type.
 
 **Implementation:**
-- For **CIFAR-10**: Uses `CNNModel` (`--model=cnn`).
-- For **EuroSAT**: Uses `EuroSATCNN` tailored for 64x64 images.
-- For **ResNet18**: Uses `ResNet18Model` (`--model=resnet18`).
-- Sets `dim_out` to the number of classes (`args.num_classes`).
+- For CIFAR-10 with `--model=cnn`, initiates `CNNModel` with output dimension `args.num_classes` (10 classes).
+- For EuroSAT with `--model=cnn`, instantiates `EuroSATCNN`, tailored for 64x64 images.
+- For `--model=resnet18`, instantiates `ResNet18Model` with a modified final layer for `args.num_classes`.
+- Raises a `ValueError` for unsupported model-dataset combinations.
 
 ---
 
