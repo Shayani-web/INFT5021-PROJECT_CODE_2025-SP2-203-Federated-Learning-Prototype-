@@ -106,7 +106,10 @@ Runs the FedLEO algorithm over multiple global rounds.
 
 
 #### Global Aggregation:
+Aggregates cluster weights globally:
 ![image](https://github.com/user-attachments/assets/ed1332fa-427f-42d9-9337-02df3fa7643b)
+
+-Updates the global model with `load_state_dict`.
 
 
 #### Energy Calculation:
