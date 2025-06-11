@@ -77,9 +77,8 @@ Runs the FedLEO algorithm over multiple global rounds.
 - Local weights and losses are collected.
 
 #### Cluster Aggregation:
-\[
-w_{\text{cluster}} = \frac{1}{|\text{cluster}|} \sum_{i \in \text{cluster}} w_i
-\]
+![image](https://github.com/user-attachments/assets/3dcfcb18-635b-4b5a-aff2-98614f8054fd)
+
 
 #### Master Selection and Communication:
 - Master node is the one with the **earliest visibility**.
