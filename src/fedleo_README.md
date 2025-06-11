@@ -23,6 +23,21 @@ The fedleo.py file implements the FedLEO algorithm, a synchronous federated lear
 
 ---
 
+---
+### Orbital Period
+Each satellite in each orbit travels at the same speed, ![image](https://github.com/user-attachments/assets/6f40e5e4-8f3b-40cc-b460-0b5328cb2e32)
+ and has the same orbital period, ![image](https://github.com/user-attachments/assets/61a00815-b319-4870-ba80-13cd07736239)
+. Here,
+![image](https://github.com/user-attachments/assets/7e926db0-a740-4512-91bf-6c09d9e329bb) -------------------------------- [1]
+
+and
+
+![image](https://github.com/user-attachments/assets/fd410cb4-8c4b-43fe-8593-db85662c934f) --------------------------------- [1]
+
+where ![image](https://github.com/user-attachments/assets/4c139487-14bb-4a04-b43e-ea59e17f92a3) is the earth radius (6371km), ![image](https://github.com/user-attachments/assets/1337c0c5-8e73-4cf3-9c55-10df94fb7cba) is geocentric gravitational constant ![image](https://github.com/user-attachments/assets/0fd7f82e-bfd8-45e9-b1bf-58812b499af8) and ![image](https://github.com/user-attachments/assets/8ca8d461-11c0-4e16-a4ae-72d67ecf6876) is orbit altitude (600km)
+
+
+
 ### 2. Phase Offsets (PHI)
 
 Satellites are evenly spaced across their orbital period:
