@@ -44,9 +44,7 @@ Satellites are evenly spaced across their orbital period:
 
 ![image](https://github.com/user-attachments/assets/5b4826c2-2472-4121-8331-5a5792227bb7)
 
-
-
-This ensures staggered satellite visibility for realistic simulation.
+The phase offset is calculated to ensure even distribution of satellites across the orbital period.
 
 ---
 
