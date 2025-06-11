@@ -35,7 +35,7 @@ for exp in experiments:
                     "--model", exp["model"],
                     "--dataset", exp["dataset"],
                     "--iid", exp["iid"],    #IID/NON-IID data
-                    "--epochs", "1",    #Define the number of global rounds
+                    "--epochs", "2",    #Define the number of global rounds
                     "--local_ep", local_ep,     # Define the number of local epochs
                     "--local_bs", bs,       # Batch size
                     "--run", run
