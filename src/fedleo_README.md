@@ -137,14 +137,16 @@ Returns:
 ## Dependencies
 
 ### External Libraries:
-- `torch`
-- `numpy`
-- `tqdm`
-
+- `torch`: For model manipulation and training.
+- `numpy`: For array operations, such as those used in weight averaging.
+- `tqdm`: For displaying progress bars during global training rounds.
+- `copy`: For creating deep copies of models to avoid unintended modifications.
+- `math`: For mathematical operations, such as determining the next visibility time.
+  
 ### Custom Modules:
-- `options.py`: Argument parsing
-- `update.py`: Local training and testing logic
-- `utils.py`: Dataset loading and model utilities
+- `options.py`: Provides args_parser for experiment configuration.
+- `update.py`: Offers LocalUpdate for local training and test_inference for evaluation.
+- `utils.py`: Includes get_dataset, average_weights, and exp_details for data handling and logging.
 
 ---
 
