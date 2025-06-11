@@ -31,9 +31,15 @@ Orbit assignment mimics physical or logical groupings of satellites—useful for
 Updates the global model by blending the weights of a single client's local model with the current global model using a weighted average.
 
 **Formula:**
+<<<<<<< HEAD
 $$
 w_{\text{global}}[k] \leftarrow \alpha \cdot w_{\text{local}}[k] + (1 - \alpha) \cdot w_{\text{global}}[k]
 $$
+=======
+
+![image](https://github.com/user-attachments/assets/6033fcca-98ba-422e-bc07-05c423391f87)
+
+>>>>>>> 2760817809b0fb419ba2d80377942b04ca86abb3
 
 - \( \alpha \in [0, 1] \) (default: 0.5) controls the influence of local updates.
 - \( k \): layer or parameter index.
@@ -50,9 +56,9 @@ $$
 Estimates training round energy consumption based on device type and duration.
 
 **Formula:**
-$$
-E = P \cdot t
-$$
+
+![image](https://github.com/user-attachments/assets/69b1deca-4c0e-4f04-b4e4-a5c9289cbf46)
+
 - \( P = 80W \) for GPU (`cuda`), \( 20W \) for CPU.
 - \( t \): duration in seconds.
 
