@@ -53,7 +53,8 @@ Compute when a satellite will next be visible to a ground station.
 
 
 Where:
-- \( \phi_s \) is the phase offset
+- ![image](https://github.com/user-attachments/assets/21c582d6-b244-4107-8853-3044df17e1cf)
+ is the phase offset
 - \( P \) is the orbital period
 - \( v_s \) is the next visibility time
 
