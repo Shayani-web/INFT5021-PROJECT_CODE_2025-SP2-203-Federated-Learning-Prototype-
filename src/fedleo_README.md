@@ -53,9 +53,11 @@ Compute when a satellite will next be visible to a ground station.
 
 
 Where:
-- \( \phi_s \) is the phase offset
+- ![image](https://github.com/user-attachments/assets/21c582d6-b244-4107-8853-3044df17e1cf)
+ is the phase offset
 - \( P \) is the orbital period
-- \( v_s \) is the next visibility time
+- ![image](https://github.com/user-attachments/assets/9ba548ce-4a72-4ebb-934d-63a9b8fd0eb7)
+ is the next visibility time
 
 ---
 
@@ -75,16 +77,14 @@ Runs the FedLEO algorithm over multiple global rounds.
 - Local weights and losses are collected.
 
 #### Cluster Aggregation:
-\[
-w_{\text{cluster}} = \frac{1}{|\text{cluster}|} \sum_{i \in \text{cluster}} w_i
-\]
+![image](https://github.com/user-attachments/assets/3dcfcb18-635b-4b5a-aff2-98614f8054fd)
+
 
 #### Master Selection and Communication:
 - Master node is the one with the **earliest visibility**.
 - Aggregation time:
-\[
-t_{\text{agg}} = \max_{c} v_c
-\]
+![image](https://github.com/user-attachments/assets/7bfe1670-efdc-4829-b6df-3075813303ea)
+
 
 #### Global Aggregation:
 \[

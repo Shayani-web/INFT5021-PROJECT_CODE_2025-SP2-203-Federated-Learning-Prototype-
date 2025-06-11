@@ -21,7 +21,7 @@ Divides the training dataset into subsets for multiple clients and assigns them 
 - Groups clients into `num_orbits` (default: 5) with `num_clients / num_orbits` clients per orbit.
 
 **Why Orbits?**  
-Orbit assignment mimics physical or logical groupings of satellites—useful for modeling constraints like visibility windows or localized communication.
+Orbit assignment mimics physical or logical groupings of satellites useful for modeling constraints like visibility windows or localized communication.
 
 ---
 
@@ -30,6 +30,7 @@ Orbit assignment mimics physical or logical groupings of satellites—useful for
 **Purpose:**  
 Updates the global model by blending the weights of a single client's local model with the current global model using a weighted average.
 
+<<<<<<< HEAD
 **Formula:**
 <<<<<<< HEAD
 $$
@@ -44,6 +45,8 @@ $$
 - \( \alpha \in [0, 1] \) (default: 0.5) controls the influence of local updates.
 - \( k \): layer or parameter index.
 
+=======
+>>>>>>> 1e0c7883bbb688e2d9d4d84098f20da702d15bc4
 **Significance:**
 - No need to wait for all clients.
 - Efficient for real-time and power-sensitive systems.
