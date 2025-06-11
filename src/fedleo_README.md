@@ -24,7 +24,7 @@ The fedleo.py file implements the FedLEO algorithm, a synchronous federated lear
 ---
 
 ---
-### Orbital Period
+### 1. Orbital Period
 Each satellite in each orbit travels at the same speed, ![image](https://github.com/user-attachments/assets/6f40e5e4-8f3b-40cc-b460-0b5328cb2e32)
  and has the same orbital period, ![image](https://github.com/user-attachments/assets/61a00815-b319-4870-ba80-13cd07736239)
 . Here,
@@ -38,7 +38,7 @@ where ![image](https://github.com/user-attachments/assets/4c139487-14bb-4a04-b43
 
 
 
-### 2. Phase Offsets (PHI)
+### 3. Phase Offsets (PHI)
 
 Satellites are evenly spaced across their orbital period:
 
@@ -50,13 +50,13 @@ This ensures staggered satellite visibility for realistic simulation.
 
 ---
 
-### 3. Cluster Definition (`CLUSTER_LIST`)
+### 4. Cluster Definition (`CLUSTER_LIST`)
 
 Satellites are grouped into clusters (one per orbit), each containing `SATS_PER_ORBIT` satellites. Each cluster performs localized aggregation before sending a representative update.
 
 ---
 
-### 4. Next Visibility Calculation (`next_visibility`)
+### 5. Next Visibility Calculation (`next_visibility`)
 
 **Purpose:**  
 Compute when a satellite will next be visible to a ground station.
@@ -76,7 +76,7 @@ Where:
 
 ---
 
-### 5. Main Training Loop (`federated_learning`)
+### 6. Main Training Loop (`federated_learning`)
 
 **Purpose:**  
 Runs the FedLEO algorithm over multiple global rounds.
