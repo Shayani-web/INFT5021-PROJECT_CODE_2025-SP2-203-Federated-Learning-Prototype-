@@ -130,6 +130,6 @@ This file is called from federated_main.py when --run=fedleo. It requires a data
 
 ---
 ## References
-1. Jabbarpour, M. R. et al. “Performance Analysis of Federated Learning in Orbital Edge Computing”. In: Proceedings of the ACM. 2023, pp. 1-10. doi:10.1145/3603166.3632140.  
+> Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & Butler, C. (2023). Performance Analysis of Federated Learning in Orbital Edge Computing. In 2023 IEEE/ACM International Conference on Utility and Cloud Computing (UCC).(https://doi.org/10.1145/3603166.3632140)
 ---
 
