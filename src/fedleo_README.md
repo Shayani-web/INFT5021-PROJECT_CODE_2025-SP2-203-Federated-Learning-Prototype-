@@ -27,9 +27,8 @@ The fedleo.py file implements the FedLEO algorithm, a synchronous federated lear
 
 Satellites are evenly spaced across their orbital period:
 
-\[
-\phi_s = s \cdot \frac{P}{\text{TOTAL\_SATELLITES}}, \quad s = 0, 1, \ldots, \text{TOTAL\_SATELLITES} - 1
-\]
+![image](https://github.com/user-attachments/assets/748bb59c-2e39-4ad1-bb34-534802fa0945)
+
 
 This ensures staggered satellite visibility for realistic simulation.
 
