@@ -120,6 +120,49 @@ Aggregates cluster weights globally:
 - Computes loss and accuracy across all clients.
 - Final test accuracy is calculated post training.
 
+
+# Federated Learning Function (federated_learning)
+
+## Purpose
+Orchestrates the FedLEO training process, integrating local training, cluster aggregation, visibility-based synchronization, and metric tracking.
+
+## Implementation
+
+### Initialization:
+- Moves the global model to the specified device (GPU if available, otherwise CPU).
+- Initializes lists to track training loss, accuracy, total time, and energy consumption.
+
+### Per Global Round (for `args.epochs` rounds):
+
+#### Local Training and Cluster Aggregation:
+- For each cluster (representing an orbit), trains all satellites using the `LocalUpdate.update_weights` method from `update.py`.
+- Aggregates the local weights within each cluster to produce a single set of weights per cluster.
+- Stores these cluster weights for further processing.
+
+#### Master Selection and Visibility Timing:
+- Selects the master satellite for each cluster, defined as the one with the earliest visibility time after local training ends.
+- Determines the visibility times for all master satellites and sets the global aggregation time as the latest of these times.
+
+#### Global Aggregation:
+- Combines the weights from all clusters into a single global weight set.
+- Updates the global model with these aggregated weights.
+
+#### Energy Consumption:
+- Estimates the energy used in the round by accounting for communication costs between all satellites and with ground stations.
+- Adds this energy cost to the running total.
+
+#### Metrics Collection:
+- Computes the average training loss and accuracy by evaluating the model across all clients using the `LocalUpdate.inference` method.
+- Updates the respective tracking lists with these metrics.
+
+#### Logging:
+- Prints statistics for the current round, including loss, accuracy, total time, and energy, and provides a final summary after all rounds.
+
+### Final Evaluation:
+- Assesses the global model’s performance on the test dataset using the `test_inference` method from `update.py`.
+- Returns the training loss history, training accuracy history, test accuracy, total time, and total energy for further analysis.
+
+
 ---
 
 ### Outputs
