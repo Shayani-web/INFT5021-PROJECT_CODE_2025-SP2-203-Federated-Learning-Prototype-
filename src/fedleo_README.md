@@ -48,11 +48,8 @@ Compute when a satellite will next be visible to a ground station.
 
 **Formula:**
 
-\[
-k = \left\lceil \frac{t - \phi_s}{P} \right\rceil
-\quad \Rightarrow \quad
-v_s = \phi_s + k \cdot P
-\]
+![image](https://github.com/user-attachments/assets/b7628f80-6b16-4221-b24f-0a1a2b478438)
+
 
 Where:
 - \( \phi_s \) is the phase offset
