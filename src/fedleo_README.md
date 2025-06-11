@@ -62,7 +62,11 @@ Compute when a satellite will next be visible to a ground station.
 
 **Formula:**
 
-![image](https://github.com/user-attachments/assets/116fbae7-79e6-4c8b-af71-18890353ba0e)
+- ![image](https://github.com/user-attachments/assets/3abf0b3c-11d8-45bb-ba92-3c47bc6a706e)
+
+- ![image](https://github.com/user-attachments/assets/cbf41a48-da3f-4771-a85e-0046ddbae140)
+
+
 
 
 
