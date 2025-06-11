@@ -83,9 +83,8 @@ Runs the FedLEO algorithm over multiple global rounds.
 #### Master Selection and Communication:
 - Master node is the one with the **earliest visibility**.
 - Aggregation time:
-\[
-t_{\text{agg}} = \max_{c} v_c
-\]
+![image](https://github.com/user-attachments/assets/7bfe1670-efdc-4829-b6df-3075813303ea)
+
 
 #### Global Aggregation:
 \[
