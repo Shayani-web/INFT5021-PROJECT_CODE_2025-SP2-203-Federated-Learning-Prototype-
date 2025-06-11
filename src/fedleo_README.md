@@ -128,5 +128,10 @@ Returns:
 
 This file is called from federated_main.py when --run=fedleo. It requires a dataset, model, and user groups, and it simulates a satellite-based federated learning scenario with visibility constraints.
 
-
+---
+## References
+1. Jabbarpour, M. R. et al. “Performance Analysis of Federated Learning in Orbital 
+Edge Computing”. In: Proceedings of the ACM. 2023, pp. 1-10. doi: 
+10.1145/3603166.3632140.   
+---
 
