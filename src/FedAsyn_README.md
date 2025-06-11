@@ -27,23 +27,6 @@ Divides the training dataset into subsets for multiple clients and assigns them 
 **Purpose:**  
 Updates the global model by blending the weights of a single client's local model with the current global model using a weighted average.
 
-<<<<<<< HEAD
-**Formula:**
-<<<<<<< HEAD
-$$
-w_{\text{global}}[k] \leftarrow \alpha \cdot w_{\text{local}}[k] + (1 - \alpha) \cdot w_{\text{global}}[k]
-$$
-=======
-
-![image](https://github.com/user-attachments/assets/6033fcca-98ba-422e-bc07-05c423391f87)
-
->>>>>>> 2760817809b0fb419ba2d80377942b04ca86abb3
-
-- \( \alpha \in [0, 1] \) (default: 0.5) controls the influence of local updates.
-- \( k \): layer or parameter index.
-
-=======
->>>>>>> 1e0c7883bbb688e2d9d4d84098f20da702d15bc4
 **Significance:**
 - No need to wait for all clients.
 - Efficient for real-time and power-sensitive systems.
