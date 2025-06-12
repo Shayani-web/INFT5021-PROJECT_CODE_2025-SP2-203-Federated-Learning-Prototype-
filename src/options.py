@@ -10,10 +10,10 @@ def args_parser():
     Parse command-line arguments for configuring federated learning experiments.
 
     This function creates an ArgumentParser to handle hyperparameters and settings
-    for federated learning algorithms (FedLEO and FedAsync), model architectures,
+    for federated learning algorithms (FedLEO and FedAsyn), model architectures,
     datasets, and training configurations. The arguments control the experiment's
     behavior, such as the number of training rounds, client data distribution,
-    model type, and optimization settings. The parsed arguments are used across
+    model type, and optimisation settings. The parsed arguments are used across
     the federated learning pipeline to ensure consistent configuration.
 
     Returns:
@@ -25,12 +25,12 @@ def args_parser():
         --local_ep (int): Number of local epochs per client (E) (default: 10).
         --local_bs (int): Local batch size (B) for client training (default: 10).
         --lr (float): Learning rate for local training (default: 0.01).
-        --momentum (float): Momentum for SGD optimizer (default: 0.5).
+        --momentum (float): Momentum for SGD optimiser (default: 0.5).
         --model (str): Model architecture ('cnn' or 'resnet18', default: 'resnet18').
         --kernel_num (int): Number of convolution kernels (default: 9, unused in current models).
         --kernel_sizes (str): Comma-separated kernel sizes for convolutions (default: '3,4,5', unused).
         --num_channels (int): Number of input image channels (default: 1, unused in current datasets).
-        --norm (str): Normalization type ('batch_norm', 'layer_norm', or 'None', default: 'batch_norm', unused).
+        --norm (str): Normalisation type ('batch_norm', 'layer_norm', or 'None', default: 'batch_norm', unused).
         --num_filters (int): Number of filters in conv nets (default: 32, unused).
         --max_pool (str): Whether to use max pooling ('True' or 'False', default: 'True', unused).
         --run (str): Federated learning algorithm ('fedleo' or 'fedasync', default: 'fedleo').
@@ -38,7 +38,7 @@ def args_parser():
         --dataset (str): Dataset name ('cifar' or 'eurosat', default: 'eurosat').
         --num_classes (int): Number of classes in the dataset (default: 10).
         --gpu (str): GPU ID for CUDA (None for CPU, default: None).
-        --optimizer (str): Optimizer type ('sgd' or 'adam', default: 'sgd').
+        --optimiser (str): Optimiser type ('sgd' or 'adam', default: 'sgd').
         --iid (int): Data distribution (1 for IID, 0 for non-IID, default: 1).
         --unequal (int): Whether to use unequal data splits for non-IID (0 for equal, default: 0).
         --stopping_rounds (int): Rounds for early stopping (default: 10, unused).
@@ -49,10 +49,10 @@ def args_parser():
         - Some arguments (e.g., kernel_num, kernel_sizes) are included for compatibility
           with other frameworks but are unused in the current implementation.
         - The default settings are tailored for the EuroSAT dataset with ResNet-18.
-        - The --alpha argument is specific to FedAsync, controlling the weight of local updates.
+        - The --alpha argument is specific to FedAsyn, controlling the weight of local updates.
     """
 
-    # Initialize ArgumentParser for command-line argument parsing
+    # Initialise ArgumentParser for command-line argument parsing
     parser = argparse.ArgumentParser()
 
     # federated arguments (Notation for the arguments followed from paper)
