@@ -28,11 +28,11 @@ The fedleo.py file implements the FedLEO algorithm, a synchronous federated lear
 Each satellite in each orbit travels at the same speed, ![image](https://github.com/user-attachments/assets/6f40e5e4-8f3b-40cc-b460-0b5328cb2e32)
  and has the same orbital period, ![image](https://github.com/user-attachments/assets/61a00815-b319-4870-ba80-13cd07736239)
 . Here,
-- ![image](https://github.com/user-attachments/assets/7e926db0-a740-4512-91bf-6c09d9e329bb) -------------------------------- [1]
+- ![image](https://github.com/user-attachments/assets/7e926db0-a740-4512-91bf-6c09d9e329bb) --------------------------------(1) [1]
 
 and
 
-- ![image](https://github.com/user-attachments/assets/fd410cb4-8c4b-43fe-8593-db85662c934f) --------------------------------- [1]
+- ![image](https://github.com/user-attachments/assets/fd410cb4-8c4b-43fe-8593-db85662c934f) ---------------------------------(2) [1]
 
 where ![image](https://github.com/user-attachments/assets/4c139487-14bb-4a04-b43e-ea59e17f92a3) is the earth radius (6371km), ![image](https://github.com/user-attachments/assets/1337c0c5-8e73-4cf3-9c55-10df94fb7cba) is geocentric gravitational constant ![image](https://github.com/user-attachments/assets/0fd7f82e-bfd8-45e9-b1bf-58812b499af8) and ![image](https://github.com/user-attachments/assets/8ca8d461-11c0-4e16-a4ae-72d67ecf6876) is orbit altitude (600km)
 
@@ -42,7 +42,7 @@ where ![image](https://github.com/user-attachments/assets/4c139487-14bb-4a04-b43
 
 Satellites are evenly spaced across their orbital period:
 
-![image](https://github.com/user-attachments/assets/247aae46-48f1-43e4-af69-a0ccaba83518)
+![image](https://github.com/user-attachments/assets/247aae46-48f1-43e4-af69-a0ccaba83518) --------------------------------(3)
 
 
 The phase offset is calculated to ensure even distribution of satellites across the orbital period.
@@ -51,7 +51,7 @@ The phase offset is calculated to ensure even distribution of satellites across 
 
 ### 4. Cluster Definition (`CLUSTER_LIST`)
 
-Satellites are grouped into clusters (one per orbit), each containing `SATS_PER_ORBIT` satellites. Each cluster performs localized aggregation before sending a representative update.
+Satellites are grouped into clusters (one per orbit), each containing `SATS_PER_ORBIT` satellites. Each cluster performs localised aggregation before sending a representative update.
 
 ---
 
@@ -62,9 +62,9 @@ Compute when a satellite will next be visible to a ground station.
 
 **Formula:**
 
-- ![image](https://github.com/user-attachments/assets/3abf0b3c-11d8-45bb-ba92-3c47bc6a706e)
+- ![image](https://github.com/user-attachments/assets/3abf0b3c-11d8-45bb-ba92-3c47bc6a706e)--------------------------(4)
 
-- ![image](https://github.com/user-attachments/assets/cbf41a48-da3f-4771-a85e-0046ddbae140)
+- ![image](https://github.com/user-attachments/assets/cbf41a48-da3f-4771-a85e-0046ddbae140) -------------------------(5)
 
 
 
@@ -89,9 +89,9 @@ Runs the FedLEO algorithm over multiple global rounds.
 
 **Key Steps:**
 
-#### Initialization:
+#### Initialisation:
 - Moves the global model to the specified device (GPU if available, otherwise CPU).
-- Initializes lists to track training loss, accuracy, total time, and energy consumption.
+- Initialises lists to track training loss, accuracy, total time, and energy consumption.
 
 ### 6.1 Per Global Round (for `args.epochs` rounds):
 
