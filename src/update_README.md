@@ -44,8 +44,5 @@ Manages local training and inference for a single client.
 - Computes loss using `NLLLoss` and updates model weights via backpropagation.
 - Logs loss to TensorBoard and prints verbose output for the first batch.
 
----
-### Refernces
-1. Jabbarpour, M. R. et al. “Performance Analysis of Federated Learning in Orbital Edge Computing”. In: Proceedings of the ACM. 2023, pp. 1-10. doi:10.1145/3603166.3632140.    
----
+
 
