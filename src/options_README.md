@@ -24,7 +24,7 @@ Parses command-line arguments to configure the experiment.
 
 #### Model Parameters:
 - `--model`: Model type (cnn or resnet18, default: resnet18).
-- `--kernel_num`, `--kernel_sizes`, `--num_channels`, `--num_filters`, `--norm`, `--max_pool`: CNN-specific parameters (mostly unused in the provided code).
+- `--kernel_num`, `--kernel_sizes`, `--num_channels`, `--num_filters`, `--norm`, `--max_pool`: CNN-specific parameters.
 
 #### Other Parameters:
 - `--run`: Federated learning algorithm (fedleo or fedasync, default: fedleo).
@@ -32,7 +32,7 @@ Parses command-line arguments to configure the experiment.
 - `--dataset`: Dataset name (cifar or eurosat, default: eurosat).
 - `--num_classes`: Number of classes (default: 10).
 - `--gpu`: GPU ID (default: None for CPU).
-- `--optimizer`: Optimizer type (sgd or adam, default: sgd).
+- `--optimizer`: Optimiser type (sgd or adam, default: sgd).
 - `--iid`: Whether data is IID (1 for IID, 0 for non-IID, default: 1).
 - `--unequal`: Whether to use unequal data splits (default: 0).
 - `--stopping_rounds`: Early stopping rounds (default: 10, unused).
@@ -53,5 +53,5 @@ Parses command-line arguments to configure the experiment.
 The `args_parser` function is called in `federated_main.py` to parse command-line arguments:
 
 ```bash
-python federated_main.py --run=fedasync --dataset=eurosat --model=cnn --epochs=10 --num_users=40
+python src\federated_main.py --run=fedasync --dataset=eurosat --model=cnn --epochs=10 --num_users=40
 
