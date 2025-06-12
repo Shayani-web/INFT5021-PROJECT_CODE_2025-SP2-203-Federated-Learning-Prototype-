@@ -56,7 +56,7 @@ def next_visibility(s, t):
     """
     ## (t - PHI[s]) is the time elapsed since satellite `s` was last at its visibility point.
     k = math.ceil((t - PHI[s]) / P)
-    # # Compute the actual time when satellite s becomes visible next.
+    # # Compute the actual time when satellite `s` becomes visible next.
     # This is its phase offset PHI[s] plus k, full orbital periods.
     v_s = PHI[s] + k * P
     return v_s
@@ -72,7 +72,7 @@ def federated_learning(args, train_dataset, test_dataset, user_groups, global_mo
 
     Args:
         args (argparse.Namespace): Command-line arguments containing hyperparameters
-            (e.g., epochs, gpu, optimizer, learning rate).
+            (e.g., epochs, gpu, optimiser, learning rate).
         train_dataset (torch.utils.data.Dataset): Training dataset split among clients.
         test_dataset (torch.utils.data.Dataset): Test dataset for final evaluation.
         user_groups (dict): Dictionary mapping client indices to their data indices.
@@ -98,7 +98,7 @@ def federated_learning(args, train_dataset, test_dataset, user_groups, global_mo
     global_model.to(device)
     global_model.train()    # Set model to training mode
     
-    # Initialize lists to track metrics across global rounds
+    # Initialise lists to track metrics across global rounds
     train_loss, train_accuracy = [], [] # Average training loss per round, Average training accuracy per round
     total_time = 0.0  # Cumulative training time in seconds
     total_energy = 0.0  # Cumulative energy consumption in relative units
@@ -106,7 +106,7 @@ def federated_learning(args, train_dataset, test_dataset, user_groups, global_mo
     # Iterate over global rounds
     for epoch in tqdm(range(args.epochs), desc="Global Rounds"):
         print(f'\n | Global Training Round : {epoch + 1} |\n')
-        # Initialize lists for cluster weights and local losses
+        # Initialise lists for cluster weights and local losses
         cluster_weights = []    # Aggregated weights for each cluster
         local_losses = []   # Training losses from local models
         # Record start time of the round
@@ -119,7 +119,7 @@ def federated_learning(args, train_dataset, test_dataset, user_groups, global_mo
             local_weights = []  # Store weights from satellites in the current cluster
             # Train each satellite (client) in the cluster
             for idx in cluster:
-                # Initialize LocalUpdate for the client with its data subset
+                # Initialise LocalUpdate for the client with its data subset
                 local_model = LocalUpdate(args=args, dataset=train_dataset,
                                           idxs=user_groups[idx], logger=logger)
                 # Perform local training, returning updated weights and loss
@@ -164,7 +164,7 @@ def federated_learning(args, train_dataset, test_dataset, user_groups, global_mo
         list_acc = []   # Store accuracy for each client
         global_model.eval() # Set model to evaluation mode
         for idx in range(args.num_users):
-            # Initialize LocalUpdate for inference
+            # Initialise LocalUpdate for inference
             local_model = LocalUpdate(args=args, dataset=train_dataset,
                                       idxs=user_groups[idx], logger=logger)
             # Compute accuracy on client's test split
