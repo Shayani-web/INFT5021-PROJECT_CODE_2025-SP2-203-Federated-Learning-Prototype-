@@ -15,7 +15,7 @@ from tqdm import tqdm  # For displaying progress bars during loops or model trai
 # ==== PyTorch Core Modules ====
 import torch                          # Main PyTorch library for tensor operations and GPU computation
 import torch.nn as nn                 # Contains PyTorch's neural network layers and loss functions
-import torch.optim as optim           # Optimizers like SGD, Adam for training models
+import torch.optim as optim           # Optimisers like SGD, Adam for training models
 from torch.utils.data import DataLoader, Dataset, random_split, Subset
 # - DataLoader: for batch loading of datasets
 # - Dataset: base class for custom datasets
@@ -30,7 +30,7 @@ from update import LocalUpdate, test_inference
 
 from utils import get_dataset, average_weights, exp_details
 # - get_dataset: loads and preprocesses datasets
-# - average_weights: computes the average of weights from multiple clients (synchronous FL)
+# - average_weights: computes the average of weights from multiple clients
 # - exp_details: prints/records experimental setup details
 
 # ==== Evaluation Metrics ====
@@ -81,7 +81,7 @@ def async_aggregate(global_model, local_weights, alpha=0.5):
 
     Effect:
         - Applies the formula: new_weight = alpha * local_weight + (1 - alpha) * global_weight
-        - Introduces partial updates without full synchronization.
+        - Introduces partial updates without full synchronisation.
     """
     global_weights = global_model.state_dict()
     for key in global_weights:
@@ -134,7 +134,7 @@ def fedAsync_Training(args, train_dataset, test_dataset, user_groups, global_mod
     Key Steps:
         1. Create clients and assign them into orbital groups.
         2. For each round:
-            a. Select one orbit using a randomized but fair scheduling method.
+            a. Select one orbit using a randomised but fair scheduling method.
             b. Pick one random client from that orbit.
             c. Perform local training for the client.
             d. Asynchronously blend the local model into the global model.
@@ -147,7 +147,7 @@ def fedAsync_Training(args, train_dataset, test_dataset, user_groups, global_mod
     global_model.to(device)
     global_model.train()
 
-    # Initialize performance trackers
+    # Initialise performance trackers
     train_accuracy = []
     round_durations = []
     round_energy = []
