@@ -97,7 +97,7 @@ Run this module by setting the `--run` argument to `fedasync` in `federated_main
 
 ```bash
 python src/federated_main.py --run=fedasync --model=resnet18 --dataset=eurosat --epochs=20
-
+```
 
 ---
 ## References
