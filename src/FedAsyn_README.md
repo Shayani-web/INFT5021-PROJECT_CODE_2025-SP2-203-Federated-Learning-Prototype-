@@ -42,7 +42,7 @@ Estimates training round energy consumption based on device type and duration.
 
 ![image](https://github.com/user-attachments/assets/69b1deca-4c0e-4f04-b4e4-a5c9289cbf46)
 
-- \( P = 80W \) for GPU (`cuda`), \( 20W \) for CPU.
+- \( P = 80W, 20W \) can be changed depending on the hardware.
 - \( t \): duration in seconds.
 
 **Use Case:**  
