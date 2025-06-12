@@ -4,23 +4,23 @@
 The `federated_main.py` file serves as the entry point for running federated learning experiments, supporting both **FedLEO** (Federated Learning in Low Earth Orbits) and **FedAsync** (asynchronous federated learning). It handles:
 
 - Dataset loading  
-- Model initialization  
+- Model initialisation  
 - Training execution  
 - Result saving  
-- Visualization of training metrics (loss and accuracy)  
+- Visualisation of training metrics (loss and accuracy)  
 - Logging results to a CSV file for easy comparison across experiments  
 
 ---
 
 ## Key Components and Functionality
 
-### 1. Setup and Initialization
+### 1. Setup and Initialisation
 
 **Purpose:**  
 Configures the experiment by parsing arguments, setting up logging, and loading the dataset.
 
 **Implementation:**
-- Initializes a `SummaryWriter` from `tensorboardX` to log metrics to TensorBoard (`TENSORBOARD_LOG_DIR`).
+- Initialises a `SummaryWriter` from `tensorboardX` to log metrics to TensorBoard (`TENSORBOARD_LOG_DIR`).
 - Parses command-line arguments using `args_parser` from `options.py`.
 - Loads dataset and user groups using `get_dataset` from `utils.py`.
 - Prints experiment configuration using `exp_details`.
@@ -30,7 +30,7 @@ Configures the experiment by parsing arguments, setting up logging, and loading 
 ### 2. Model Selection
 
 **Purpose:**  
-Initializes the global model based on the dataset and model type.
+Initialises the global model based on the dataset and model type.
 
 **Implementation:**
 - For CIFAR-10 with `--model=cnn`, initiates `CNNModel` with output dimension `args.num_classes` (10 classes).
