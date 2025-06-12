@@ -126,10 +126,10 @@ class EuroSATCNN(nn.Module):
     def __init__(self, dim_out):
         super(EuroSATCNN, self).__init__()
 
-        self.conv1 = nn.Conv2d(3, 6, kernel_size=5)      # Input: RGB → 6 filters
+        self.conv1 = nn.Conv2d(3, 6, kernel_size=5)      # Input: RGB -> 6 filters
         self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
 
-        self.conv2 = nn.Conv2d(6, 16, kernel_size=5)     # Output: (16, 26, 26) → pooled: (16, 13, 13)
+        self.conv2 = nn.Conv2d(6, 16, kernel_size=5)     # Output: (16, 26, 26) -> pooled: (16, 13, 13)
 
         self.fc1 = nn.Linear(16 * 13 * 13, 120)  # Flattened features = 2704
         self.fc2 = nn.Linear(120, 84)
