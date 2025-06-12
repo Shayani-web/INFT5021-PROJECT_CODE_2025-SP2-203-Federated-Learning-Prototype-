@@ -174,13 +174,13 @@ class LocalUpdate(object):
             - total_loss (float): Sum of batch losses over the test set.
 
     Mathematical Formulation:
-        - Loss: L_total = Σ(L_batch), where L_batch = NLLLoss(outputs, labels).
-        - Accuracy: acc = (Σ(correct_predictions)) / total_samples, where
+        - Loss: L_total = ∑(L_batch), where L_batch = NLLLoss(outputs, labels).
+        - Accuracy: acc = (∑(correct_predictions)) / total_samples, where
           correct_predictions = number of samples where predicted label equals true label.
     """
-         # Set the model to evaluation mode (disables dropout and batch normalization updates)
+         # Set the model to evaluation mode (disables dropout and batch normalisation updates)
         model.eval()
-        # Initialize metrics for loss, correct predictions, and total samples
+        # Initialise metrics for loss, correct predictions, and total samples
         loss, total, correct = 0.0, 0.0, 0.0
 
         # Iterate over batches in the test DataLoader
@@ -227,18 +227,18 @@ def test_inference(args, model, test_dataset):
             - total_loss (float): Sum of batch losses over the test dataset.
 
     Mathematical Formulation:
-        - Loss: L_total = Σ(L_batch), where L_batch = NLLLoss(outputs, labels).
-        - Accuracy: acc = (Σ(correct_predictions)) / total_samples, where
+        - Loss: L_total = ∑(L_batch), where L_batch = NLLLoss(outputs, labels).
+        - Accuracy: acc = (∑(correct_predictions)) / total_samples, where
           correct_predictions = number of samples where predicted label equals true label.
     """
     # Set the model to evaluation mode
     model.eval()
-    # Initialize metrics for loss, correct predictions, and total samples
+    # Initialise metrics for loss, correct predictions, and total samples
     loss, total, correct = 0.0, 0.0, 0.0
 
     # Set device based on GPU availability
     device = 'cuda' if args.gpu else 'cpu'
-    # Initialize Negative Log Likelihood Loss
+    # Initialise Negative Log Likelihood Loss
     criterion = nn.NLLLoss().to(device)
     # Create DataLoader for the test dataset with a fixed batch size
     testloader = DataLoader(test_dataset, batch_size=128,
