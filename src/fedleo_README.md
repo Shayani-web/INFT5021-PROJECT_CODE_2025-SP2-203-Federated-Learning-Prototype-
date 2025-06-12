@@ -71,6 +71,8 @@ Compute when a satellite will next be visible to a ground station.
 
 
 Where:
+- k is the number of full orbital periods that have elapsed since the satellite’s initial phase offset.
+- t is the current time in seconds, measured from some reference point (i.e., start of the simulation).
 - ![image](https://github.com/user-attachments/assets/21c582d6-b244-4107-8853-3044df17e1cf)
  is the phase offset
 - ![image](https://github.com/user-attachments/assets/43b814b8-ab99-487d-9315-175ec8aa1732)
