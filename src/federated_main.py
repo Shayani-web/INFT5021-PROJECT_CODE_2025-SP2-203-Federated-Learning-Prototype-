@@ -50,7 +50,7 @@ def append_accuracy_csv(model_name, accuracy,specs, filename='accuracy_results.c
     Notes:
         - The CSV file is created in the current working directory if it does not exist.
         - Columns include: Model Name, Model, Dataset, Epochs, Local Epochs, Local Batch Size,
-          Learning Rate, Optimizer, IID, Accuracy.
+          Learning Rate, Optimiser, IID, Accuracy.
         - The function prints a confirmation message after appending the results.
     """
     # Format specifications as a comma-separated string
@@ -83,20 +83,20 @@ if __name__ == '__main__':
     # Record the start time of the experiment
     start_time = time.time()
     
-    # Initialize TensorBoard logger for tracking metrics
+    # Initialise TensorBoard logger for tracking metrics
     logger = SummaryWriter(TENSORBOARD_LOG_DIR)
 
     # Parse command-line arguments to configure the experiment
     args = args_parser()
 
-    # Print experiment details (model, optimizer, dataset, etc.)
+    # Print experiment details (model, optimiser, dataset, etc.)
     exp_details(args)
     
     
     # Load training and test datasets, along with user groups (client data splits)
     train_dataset, test_dataset, user_groups = get_dataset(args)
     
-    # Initialize the global model based on dataset and model type
+    # Initialise the global model based on dataset and model type
     if args.model == 'cnn' and args.dataset == 'cifar':
         global_model = CNNModel(dim_out=args.num_classes)
 
