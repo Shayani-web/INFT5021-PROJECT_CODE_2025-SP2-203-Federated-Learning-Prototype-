@@ -60,7 +60,7 @@ This document provides a technical breakdown of the Python source files used in 
 
 -Captures spatial features from satellite scenes like roads, forests, and rivers.
 
--Useful for testing FL performance on real-world non-IID satellite data.
+-Useful for testing FL performance on real-world satellite data.
 
 
 
@@ -69,7 +69,7 @@ This document provides a technical breakdown of the Python source files used in 
 
 -Replaces the original final fully connected layer with a custom classifier suited to 10 classes for EuroSAT data.
 
--Typically used with EuroSAT for better accuracy due to its deeper architecture and skip connections.
+-Can be used with both EuroSAT and CIFAR-10 for better accuracy due to its deeper architecture and skip connections.
 
 -Suitable for more complex tasks and higher-performing FL experiments.
 
