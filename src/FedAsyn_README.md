@@ -98,3 +98,9 @@ Run this module by setting the `--run` argument to `fedasync` in `federated_main
 ```bash
 python src/federated_main.py --run=fedasync --model=resnet18 --dataset=eurosat --epochs=20
 
+
+---
+## References
+> 1. Jabbarpour, M. R., Javadi, B., Leong, P. H. W., Calheiros, R. N., Boland, D., & Butler, C. (2023). Performance Analysis of Federated Learning in Orbital Edge Computing. In 2023 IEEE/ACM International Conference on Utility and Cloud Computing (UCC).(https://doi.org/10.1145/3603166.3632140)
+---
+
